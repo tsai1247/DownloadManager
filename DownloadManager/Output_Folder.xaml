@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="DownloadManager.Output_Folder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DownloadManager"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
+             MaxHeight="70">
+    
+    <UserControl.Resources>
+        <Style x:Key="Btn_ArrowRight" TargetType="Button">
+            <Setter Property="Content" Value=" → "/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="DockPanel.Dock" Value="Left"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid Margin="10">
+        <DockPanel>
+            <!--<TextBlock DockPanel.Dock="Top" x:Name="DebugText" Text="debugging"/>-->
+            <Button x:Name="Move" Style="{StaticResource Btn_ArrowRight}"
+                    Click="Move_Click"/>
+            
+            <Button DockPanel.Dock="Right" x:Name="Load"
+                Content="..." FontSize="20" FontWeight="Bold"
+                Width="50" Height="40" Click="Load_Click"/>
+
+            <TextBox x:Name="OutputPath"
+                Text="tmp" Height="40" FontSize="18" FontWeight="Bold"
+                VerticalContentAlignment="Center" IsReadOnly="True"
+                TextWrapping="Wrap">
+                <TextBox.ToolTip>
+                    <ToolTip>
+                        <Label x:Name="FullPath"/>
+                    </ToolTip>
+                </TextBox.ToolTip>
+            </TextBox>
+
+        </DockPanel>
+    </Grid>
+</UserControl>
