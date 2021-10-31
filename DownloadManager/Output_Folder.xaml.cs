@@ -40,13 +40,21 @@ namespace DownloadManager
             {
                 string path = dlg.ResultPath;
 
-                FullPath.Content = path;
-                OutputPath.Text = path.Split("\\")[^1];
-                if (OutputPath.Text == "")
-                    OutputPath.Text = path;
+                if (path[0] != ':')
+                {
+                    FullPath.Content = path;
+                    OutputPath.Text = path.Split("\\")[^1];
+                    if (OutputPath.Text == "")
+                        OutputPath.Text = path;
 
-                SaveOutputPath(path);
+                    SaveOutputPath(path);
+                }
+                else
+                {
+                    MessageBox.Show("該路徑無法存取", "錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+
         }
 
         private void SaveOutputPath(string path)
@@ -113,6 +121,19 @@ namespace DownloadManager
             FileLoad.SetLastUpdateTime(DateTime.Now);
             ((MainWindow)Application.Current.MainWindow).Refresh_Click(null, null);
 
+        }
+
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string commandText = string.Format("{0}{1}{0}", "\"", FullPath.Content);
+                Process.Start("explorer.exe", commandText);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("系統不支援開啟資料夾此功能", "錯誤", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

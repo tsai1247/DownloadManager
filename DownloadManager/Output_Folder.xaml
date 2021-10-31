@@ -26,10 +26,15 @@
             <!--<TextBlock DockPanel.Dock="Top" x:Name="DebugText" Text="debugging"/>-->
             <Button x:Name="Move" Style="{StaticResource Btn_ArrowRight}"
                     Click="Move_Click"/>
-            
+
+            <Button DockPanel.Dock="Right" x:Name="Open"
+                Content="Open" FontSize="14" FontWeight="Bold"
+                Width="50" Height="40" Click="Open_Click" Margin="10, 0, 10, 0"/>
+
             <Button DockPanel.Dock="Right" x:Name="Load"
                 Content="..." FontSize="20" FontWeight="Bold"
-                Width="50" Height="40" Click="Load_Click"/>
+                Width="40" Height="40" Click="Load_Click"/>
+            
 
             <TextBox x:Name="OutputPath"
                 Text="tmp" Height="40" FontSize="18" FontWeight="Bold"
